@@ -21,7 +21,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @SpringBootApplication
 @Slf4j
 @EnableSwagger2
-@EnableWebSecurity
+//@EnableWebSecurity
 //@ComponentScan
 public class DemoApplication {
 

@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  */
 
 @Configuration
-@EnableWebSecurity
+//@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
@@ -24,13 +24,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/console").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/login").permitAll()
-                .anyRequest().authenticated()
-                .and()
+                .antMatchers(HttpMethod.POST, "/api/login").permitAll();
+                //.anyRequest().authenticated()
+                //.and()
                 // We filter the api/login requests
-                .addFilterBefore(new JWTLoginFilter("/api/login", authenticationManager()), UsernamePasswordAuthenticationFilter.class)
+                //.addFilterBefore(new JWTLoginFilter("/api/login", authenticationManager()), UsernamePasswordAuthenticationFilter.class)
                 // And filter other requests to check the presence of JWT in header
-                .addFilterBefore(new JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+                //.addFilterBefore(new JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
                 // And filter other requests to check the presence of JWT in header
                // .addFilterBefore(new JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
                 //.and()
